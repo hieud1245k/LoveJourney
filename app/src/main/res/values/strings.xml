@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LoveJourney</string>
+    <string name="s_day">%s day</string>
 </resources>

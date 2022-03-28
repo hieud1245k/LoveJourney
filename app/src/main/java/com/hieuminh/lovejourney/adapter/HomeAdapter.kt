@@ -5,14 +5,16 @@ import android.view.ViewGroup
 import com.hieuminh.lovejourney.adapter.base.BaseAdapter
 import com.hieuminh.lovejourney.databinding.ItemEventBinding
 import com.hieuminh.lovejourney.models.Couple
+import com.hieuminh.lovejourney.models.Event
 
-class HomeAdapter: BaseAdapter<Couple>() {
+class HomeAdapter: BaseAdapter<Event>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return EventViewHolder(ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     inner class EventViewHolder(private val binding: ItemEventBinding): BaseViewHolder(binding.root) {
-        override fun bind(data: Couple) {
+        override fun bind(data: Event) {
+            binding.ivDate.text = data.date
         }
     }
 }
