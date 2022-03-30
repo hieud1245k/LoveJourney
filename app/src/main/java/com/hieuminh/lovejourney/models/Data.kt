@@ -25,7 +25,7 @@ class Data : BaseModel() {
     @Expose
     var createdDate: String? = null
 
-    fun getType(): Int {
-        return 0
-    }
+    @SerializedName("gender")
+    @Expose
+    var gender: Int? = null
 }

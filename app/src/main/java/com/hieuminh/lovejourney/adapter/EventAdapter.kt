@@ -23,6 +23,7 @@ class EventAdapter : BaseAdapter<Event>() {
             binding.ivDate.text = DateUtil.getDayMonth(data.date ?: "", AppPatterns.DATE_PATTERN)
             val dataAdapter = dataAdapters?.get(layoutPosition)
             dataAdapter?.updateData(data.dataList as MutableList<Data>?)
+            binding.rvDataList.adapter = dataAdapter
         }
     }
 

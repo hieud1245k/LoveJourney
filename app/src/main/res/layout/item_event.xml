@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dp_30"
+    tools:ignore="RtlSymmetry">
 
     <RelativeLayout
         android:layout_width="@dimen/dp_40"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <View
             android:layout_width="@dimen/dp_16"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@color/green"
-            android:minHeight="@dimen/dp_150" />
+            android:background="@color/green" />
 
         <TextView
             android:id="@+id/iv_date"
@@ -26,10 +29,17 @@
 
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_data_list"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_8" />
+        android:layout_marginHorizontal="@dimen/dp_8">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_data_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </RelativeLayout>
 
 </LinearLayout>
