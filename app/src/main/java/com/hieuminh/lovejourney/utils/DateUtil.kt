@@ -2,6 +2,7 @@ package com.hieuminh.lovejourney.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.hieuminh.lovejourney.models.SimpleDate
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -57,5 +58,24 @@ object DateUtil {
         } catch (e: java.lang.Exception) {
             null
         }
+    }
+
+    fun convertDateStringToSimpleDate(dateString: String, pattern: String) : SimpleDate? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val dateValue = convertStringToLocalDate(dateString, pattern)
+            dateValue?.let { SimpleDate(dateValue.year, dateValue.monthValue - 1, dateValue.dayOfMonth) }
+        } else {
+            val calendar = GregorianCalendar()
+            val dateValue = convertStringToDate(dateString, pattern)
+            dateValue?.let {
+                calendar.time = dateValue
+                SimpleDate.fromCalendar(calendar)
+            }
+        }
+    }
+
+    fun getDayMonth(value: String, pattern: String): String? {
+        val simpleDate = convertDateStringToSimpleDate(value, pattern)
+        return simpleDate?.let { "${it.day}/${it.month}" }
     }
 }
